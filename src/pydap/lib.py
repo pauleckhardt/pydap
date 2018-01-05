@@ -9,7 +9,6 @@ from numpy import isnan
 
 from .exceptions import ConstraintExpressionError
 
-
 __dap__ = '2.15'
 __version__ = get_distribution("Pydap").version
 
@@ -140,6 +139,10 @@ def encode(obj):
     try:
         if isnan(obj):
             return "NaN"
+    except:
+        pass
+    try:
+        return quote_val(obj)
     except:
         pass
     try:
